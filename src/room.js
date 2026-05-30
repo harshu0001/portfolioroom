@@ -1612,7 +1612,7 @@ export function buildRoom(THREE, scene) {
   kiddoFrameGroup.add(kBoard);
 
   // 3. The kiddo photo itself
-  const kiddoTexture = new THREE.TextureLoader().load('/kiddo.jpg');
+  const kiddoTexture = new THREE.TextureLoader().load('kiddo.jpg');
   kiddoTexture.colorSpace = THREE.SRGBColorSpace;
   
   const kPhotoMat = new THREE.MeshBasicMaterial({ map: kiddoTexture });
@@ -1644,7 +1644,7 @@ export function buildRoom(THREE, scene) {
   k2Board.position.z = 0.018; // sit slightly forward
   f1Group.add(k2Board);
 
-  const kiddo2Texture = new THREE.TextureLoader().load('/kiddo2.png');
+  const kiddo2Texture = new THREE.TextureLoader().load('kiddo2.png');
   kiddo2Texture.colorSpace = THREE.SRGBColorSpace;
 
   const k2PhotoMat = new THREE.MeshBasicMaterial({ map: kiddo2Texture });
@@ -1670,7 +1670,7 @@ export function buildRoom(THREE, scene) {
   k3Board.position.z = 0.018; // sit slightly forward
   f2Group.add(k3Board);
 
-  const kiddo3Texture = new THREE.TextureLoader().load('/kiddo3.png');
+  const kiddo3Texture = new THREE.TextureLoader().load('kiddo3.png');
   kiddo3Texture.colorSpace = THREE.SRGBColorSpace;
 
   const k3PhotoMat = new THREE.MeshBasicMaterial({ map: kiddo3Texture });

@@ -108,6 +108,35 @@ npm run build
 
 ---
 
+## 🌐 GitHub Pages Deployment
+
+This project is fully configured to deploy seamlessly to GitHub Pages using **relative asset compilation** and **automated CI/CD workflows**.
+
+### Automated Deploy (Recommended)
+An automated GitHub Actions deployment workflow is located in `.github/workflows/deploy.yml`. Every time you push to the `main` or `master` branch, GitHub will automatically compile the project and deploy the build folder to a secure, separate hosting branch (`gh-pages`):
+
+1. **Commit and push** your local workspace updates to your remote GitHub repository:
+   ```bash
+   git add .
+   git commit -m "Deploy state-of-the-art developer room portfolio"
+   git push origin main
+   ```
+2. GitHub Actions will trigger, installing node packages, running `npm run build`, and committing the compiled bundle straight into the `gh-pages` branch.
+3. In your repository on GitHub, navigate to **Settings > Pages**:
+   - Under **Build and deployment > Source**, select **Deploy from a branch**.
+   - Under **Branch**, select **`gh-pages`** and the `/ (root)` folder.
+   - Click **Save**. Your site will automatically go live at your GitHub Pages URL!
+
+### Manual Build & Deploy
+If you ever need to deploy the site manually:
+1. Compile the optimized bundle:
+   ```bash
+   npm run build
+   ```
+2. Deploy the contents of the generated **`dist/`** directory (not the project's root folder!) directly to your static hosting server or pages branch.
+
+---
+
 ## 👤 Developer Profile
 * **Name**: Harsh Pratap Singh
 * **Email**: [prataph229@gmail.com](mailto:prataph229@gmail.com)
