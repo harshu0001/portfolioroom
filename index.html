@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harsh Pratap Singh | Portfolio</title>
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- The Three.js Canvas container -->
+    <canvas id="webgl"></canvas>
+
+    <!-- Glassmorphic Dashboard UI Overlay -->
+    <div id="hud-container">
+      
+      <!-- Top Stats Bar -->
+      <header class="hud-panel top-bar">
+        <div class="hud-brand">
+          <!-- <span class="pulse-dot"></span> -->
+          <h1>HARSH_PRATAP_SINGH <span class="version"></span></h1>
+        </div>
+        <div class="hud-stats">
+          <span class="stat-item"><span class="stat-label">CPU:</span> <span id="stat-cpu">12.4%</span></span>
+          <span class="stat-item"><span class="stat-label">MEM:</span> <span id="stat-mem">8.4 GB</span></span>
+          <span class="stat-item"><span class="stat-label">SYS:</span> <span id="stat-status" class="status-stable">STABLE</span></span>
+        </div>
+      </header>
+
+      <!-- Pulsating Floating Guide Banner -->
+      <div class="hud-guide-banner" id="hud-guide">
+        <span class="guide-pulse-ring"></span>
+        <span class="guide-text">💡 <strong>Quick Guide:</strong> Click the <strong>Central Curved Monitor</strong> to zoom in, boot macOS, and explore my Portfolio & Resume!</span>
+        <button class="guide-close-btn" onclick="document.getElementById('hud-guide').style.opacity='0'; setTimeout(() => document.getElementById('hud-guide').remove(), 300)">&times;</button>
+      </div>
+
+      <!-- Left Controls Panel -->
+      <aside class="hud-panel left-panel">
+        <div class="panel-section">
+          <h2>ENVIRONMENT</h2>
+          <div class="control-row">
+            <span class="control-label">Time of Day</span>
+            <button id="day-night-toggle" class="btn btn-toggle mode-night">
+              <span class="btn-icon">🌙</span>
+              <span class="btn-text">NIGHT MODE</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <h2>CAMERA VIEWS</h2>
+          <div class="view-grid">
+            <button class="btn btn-view active" data-view="overview" id="btn-view-overview">Overview</button>
+            <button class="btn btn-view" data-view="desk" id="btn-view-desk">Desk Setup</button>
+            <button class="btn btn-view" data-view="shelf" id="btn-view-shelf">Shelves</button>
+            <button class="btn btn-view" data-view="window" id="btn-view-window">Window View</button>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <h2>SOUNDSCAPE</h2>
+          <div class="sound-controls">
+            <div class="toggle-row">
+              <label class="switch-container">
+                <input type="checkbox" id="sound-rain" />
+                <span class="slider"></span>
+              </label>
+              <span class="sound-label">Cozy Rain & Ambient Loop</span>
+            </div>
+            <div class="toggle-row">
+              <label class="switch-container">
+                <input type="checkbox" id="sound-pc" />
+                <span class="slider"></span>
+              </label>
+              <span class="sound-label">PC Fan Humming & Beep</span>
+            </div>
+            <div class="toggle-row">
+              <label class="switch-container">
+                <input type="checkbox" id="sound-keys" checked />
+                <span class="slider"></span>
+              </label>
+              <span class="sound-label">Mech Keyboard Clicks</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-section help-section">
+          <h2>INTERACTIVE 3D OBJECTS</h2>
+          <p class="help-text">Click elements inside the 3D room to trigger reactions:</p>
+          <ul class="interactive-list">
+            <li>🖥️ <span class="hl" style="color: var(--accent-cyan); font-weight: bold; text-shadow: 0 0 8px rgba(0, 242, 254, 0.4);">Main Curved Monitor</span> to open macOS Resume/Portfolio</li>
+            <li>💡 <span class="hl">Desk Lamp</span> to toggle lighting</li>
+            <li>☕ <span class="hl">Coffee Mug</span> to spawn steam</li>
+            <li>⌨️ <span class="hl">Keyboard</span> to type custom clicks</li>
+            <li>🖥️ <span class="hl">PC Case</span> to reboot graphics core</li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Right Interactive Terminal Panel -->
+      <aside class="hud-panel right-panel">
+        <div class="panel-section terminal-section">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="terminal-title">bash - devroom_os</span>
+          </div>
+          <div class="terminal-body" id="terminal-log">
+            <div class="log-line system">Initializing 3D Developer Workspace Engine...</div>
+            <div class="log-line system">> WebGL Canvas: Loaded successfully.</div>
+            <div class="log-line system">> Lights & Soft Shadow maps: Active.</div>
+            <div class="log-line system">> Proportions: Calibrated (1 unit = 0.5 meters).</div>
+            <div class="log-line command">devroom ~ npm run dev</div>
+            <div class="log-line success">Vite v6.0.12 ready in 42ms. Local: http://localhost:5173</div>
+            <div class="log-line text-cyan">> Room theme: CYBERPUNK_NIGHT active.</div>
+            <div class="log-line">Type /help to view list of interactive system commands.</div>
+            <div class="log-line text-magenta" style="font-weight: bold; text-shadow: 0 0 5px rgba(255, 0, 127, 0.3); border: 1px dashed rgba(255, 0, 127, 0.3); padding: 4px 8px; border-radius: 4px; margin-top: 4px;">💡 SYSTEM PROMPT: Click the main center curved screen to zoom in, boot macOS, and explore my full Portfolio and Resume!</div>
+          </div>
+          <div class="terminal-input-container">
+            <span class="prompt">$</span>
+            <input type="text" id="terminal-input" placeholder="Type command (e.g. /help, /lamp)..." autocomplete="off" />
+          </div>
+        </div>
+      </aside>
+
+      <!-- Bottom Navigation/Helper Bar -->
+      <footer class="hud-footer">
+        <p>🖱️ <strong>Left-Click + Drag</strong>: Orbit Camera | <strong>Right-Click + Drag</strong>: Pan | <strong>Scroll</strong>: Zoom | 🖥️ <strong>Click the Central Monitor</strong> to boot macOS & explore Resume/Portfolio!</p>
+      </footer>
+    </div>
+
+    <!-- macOS-style Portfolio Overlay Modal -->
+    <div id="macos-desktop" class="hidden-os">
+      
+      <!-- Top Menu Bar -->
+      <nav class="mac-menubar">
+        <div class="menubar-left">
+          <span class="mac-logo" id="mac-apple-menu"></span>
+          <span class="active-app">Finder</span>
+          <span class="menu-item" id="menu-about">About</span>
+          <span class="menu-item" id="menu-projects">Projects</span>
+          <span class="menu-item" id="menu-resume">Resume</span>
+          <span class="menu-item" id="menu-contact">Contact</span>
+        </div>
+        <div class="menubar-right">
+          <span class="menu-icon">🔋 100%</span>
+          <span class="menu-icon">📶</span>
+          <span class="menu-icon">🔍</span>
+          <span class="mac-clock" id="mac-clock">09:41 AM</span>
+        </div>
+      </nav>
+
+      <!-- Desktop Work Area (where icons sit) -->
+      <main class="mac-workspace">
+        
+        <!-- Desktop Shortcuts -->
+        <div class="desktop-shortcuts">
+          <div class="shortcut-icon" data-open="win-about">
+            <span class="shortcut-symbol">👤</span>
+            <span class="shortcut-label">About Me.app</span>
+          </div>
+          <div class="shortcut-icon" data-open="win-projects">
+            <span class="shortcut-symbol">📂</span>
+            <span class="shortcut-label">Projects.app</span>
+          </div>
+          <div class="shortcut-icon" data-open="win-resume">
+            <span class="shortcut-symbol">📝</span>
+            <span class="shortcut-label">Resume.pdf</span>
+          </div>
+          <div class="shortcut-icon" data-open="win-contact">
+            <span class="shortcut-symbol">✉️</span>
+            <span class="shortcut-label">Contact.app</span>
+          </div>
+        </div>
+
+        <!-- 1. WINDOW: ABOUT ME -->
+        <div class="mac-window" id="win-about" style="top: 15%; left: 20%; width: 550px; height: 380px;">
+          <div class="window-header">
+            <div class="window-controls">
+              <span class="win-btn close" data-close="win-about"></span>
+              <span class="win-btn minimize"></span>
+              <span class="win-btn maximize"></span>
+            </div>
+            <span class="window-title">About Me</span>
+          </div>
+          <div class="window-body">
+            <div class="about-hero">
+              <span class="hero-avatar">👨‍💻</span>
+              <div class="hero-details">
+                <h3>Harsh Pratap Singh</h3>
+                <p class="sub">Backend & Full-Stack Developer | CS Student @ IIIT Ranchi</p>
+              </div>
+            </div>
+            <div class="about-content">
+              <p>I am a Computer Science & Engineering student at IIIT Ranchi and an active Full-Stack Web Developer. I specialize in building highly optimized backend architectures, real-time synchronization layers, and interactive 3D graphics.</p>
+              <h4>CORE EXPERTISE:</h4>
+              <div class="tech-tags">
+                <span class="tag">C / C++</span>
+                <span class="tag">JavaScript (ES6+)</span>
+                <span class="tag">Python</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">React.js / Next.js</span>
+                <span class="tag">Node.js / Express.js</span>
+                <span class="tag">Three.js / React Three Fiber</span>
+                <span class="tag">MongoDB / PostgreSQL / Redis</span>
+                <span class="tag">Socket.io / WebRTC</span>
+                <span class="tag">GSAP / Tailwind CSS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. WINDOW: PROJECTS -->
+        <div class="mac-window hidden-window" id="win-projects" style="top: 10%; left: 15%; width: 700px; height: 450px;">
+          <div class="window-header">
+            <div class="window-controls">
+              <span class="win-btn close" data-close="win-projects"></span>
+              <span class="win-btn minimize"></span>
+              <span class="win-btn maximize"></span>
+            </div>
+            <span class="window-title">Projects Directory</span>
+          </div>
+          <div class="window-body">
+            <div class="projects-grid">
+              <div class="project-card">
+                <div class="project-header">
+                  <span class="folder-symbol">🎓</span>
+                  <h4>Adhyan (LMS)</h4>
+                  <span class="hot-badge">Active</span>
+                </div>
+                <p>Real-time Learning Management System with WebRTC peer-to-peer video streaming and a collaborative whiteboard ("Pencil Space") synced via Socket.io.</p>
+                <div class="card-tags">
+                  <span>Next.js</span> <span>WebRTC</span> <span>Socket.io</span> <span>Node.js</span> <span>MongoDB</span>
+                </div>
+              </div>
+              
+              <div class="project-card">
+                <div class="project-header">
+                  <span class="folder-symbol">📈</span>
+                  <h4>FinDash Dashboard</h4>
+                </div>
+                <p>Interactive financial analytics dashboard featuring complex real-time market data visualization with Chart.js, optimized state management, and responsive mobile-first UI.</p>
+                <div class="card-tags">
+                  <span>React</span> <span>Node.js</span> <span>Chart.js</span> <span>Tailwind CSS</span>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <div class="project-header">
+                  <span class="folder-symbol">✨</span>
+                  <h4>Harvex Studio</h4>
+                </div>
+                <p>Premium 3D branding agency portfolio featuring interactive particle systems and custom shaders running at a smooth 60fps, driven by GSAP animations.</p>
+                <div class="card-tags">
+                  <span>TypeScript</span> <span>Three.js</span> <span>React Three Fiber</span> <span>GSAP</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. WINDOW: RESUME -->
+        <div class="mac-window hidden-window" id="win-resume" style="top: 8%; left: 25%; width: 500px; height: 480px;">
+          <div class="window-header">
+            <div class="window-controls">
+              <span class="win-btn close" data-close="win-resume"></span>
+              <span class="win-btn minimize"></span>
+              <span class="win-btn maximize"></span>
+            </div>
+            <span class="window-title">Resume.pdf</span>
+          </div>
+          <div class="window-body resume-body">
+            <div class="resume-header">
+              <h2>HARSH PRATAP SINGH</h2>
+              <p class="resume-subtitle">Computer Science & Engineering Student @ IIIT Ranchi</p>
+              <div class="resume-contact">
+                <span>📧 prataph229@gmail.com</span> | <span>📞 +91-8630989515</span>
+              </div>
+            </div>
+            <div class="timeline">
+              <div class="timeline-item">
+                <span class="time-dot"></span>
+                <h5>Backend Developer (Remote) — Codingal</h5>
+                <span class="duration">May 2024 - Sept 2025</span>
+                <p>Engineered server-side real-time collaboration engines using Socket.io, built a high-concurrency student-teacher chat module, and architected automated calendar dashboard scheduling workflows.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="time-dot"></span>
+                <h5>Front-End Developer (Remote) — CodePen.io</h5>
+                <span class="duration">Aug 2023 - Jan 2024</span>
+                <p>Designed and built new UI modules with modern web standards, focusing on style engineering and advanced CSS customizations to enhance platform aesthetics.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="time-dot"></span>
+                <h5>B.Tech in Computer Science — IIIT Ranchi</h5>
+                <span class="duration">2022 - 2026</span>
+                <p>Pursuing Bachelor of Technology with a focus on core data structures, algorithms, and full-stack web architecture. Current CGPA: 8.13.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. WINDOW: CONTACT -->
+        <div class="mac-window hidden-window" id="win-contact" style="top: 20%; left: 30%; width: 450px; height: 320px;">
+          <div class="window-header">
+            <div class="window-controls">
+              <span class="win-btn close" data-close="win-contact"></span>
+              <span class="win-btn minimize"></span>
+              <span class="win-btn maximize"></span>
+            </div>
+            <span class="window-title">Contact Portal</span>
+          </div>
+          <div class="window-body">
+            <form class="mac-form" id="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully! (Simulated)'); document.getElementById('win-contact').classList.add('hidden-window');">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" required placeholder="E.g., Jane Doe" />
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" required placeholder="prataph229@gmail.com" />
+              </div>
+              <div class="form-group">
+                <label>Message</label>
+                <textarea required placeholder="Write your awesome message here..."></textarea>
+              </div>
+              <button class="btn btn-mac-submit" type="submit">Send Message</button>
+            </form>
+          </div>
+        </div>
+
+      </main>
+
+      <!-- macOS Screen Brightness Overlay (controlled by HUD sliders!) -->
+      <div id="mac-brightness-overlay"></div>
+
+      <!-- macOS Slide-out Notification & Control Center -->
+      <div id="mac-notification-center" class="hidden-panel">
+        
+        <!-- Toggle Widgets Section -->
+        <div class="nc-grid">
+          <div class="nc-card active-widget" id="widget-wifi">
+            <span class="widget-icon">📶</span>
+            <div class="widget-info">
+              <span class="widget-title">Wi-Fi</span>
+              <span class="widget-status" id="wifi-status">Home_5G</span>
+            </div>
+          </div>
+          <div class="nc-card active-widget" id="widget-bluetooth">
+            <span class="widget-icon">🔹</span>
+            <div class="widget-info">
+              <span class="widget-title">Bluetooth</span>
+              <span class="widget-status" id="bt-status">Keychron K2</span>
+            </div>
+          </div>
+          <div class="nc-card" id="widget-airdrop">
+            <span class="widget-icon">🔄</span>
+            <div class="widget-info">
+              <span class="widget-title">AirDrop</span>
+              <span class="widget-status" id="ad-status">Off</span>
+            </div>
+          </div>
+          <div class="nc-card" id="widget-dnd">
+            <span class="widget-icon">🌙</span>
+            <div class="widget-info">
+              <span class="widget-title">Do Not Disturb</span>
+              <span class="widget-status" id="dnd-status">Off</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls Sliders Section -->
+        <div class="nc-sliders">
+          <div class="slider-group">
+            <span class="slider-icon">☀️</span>
+            <input type="range" id="slider-brightness" min="0" max="60" value="0" />
+            <span class="slider-label">Display</span>
+          </div>
+          <div class="slider-group">
+            <span class="slider-icon">🔊</span>
+            <input type="range" id="slider-volume" min="0" max="100" value="80" />
+            <span class="slider-label">Sound</span>
+          </div>
+        </div>
+
+        <!-- Interactive Calendar Widget -->
+        <div class="nc-widget calendar-widget">
+          <div class="calendar-header">
+            <span class="month-title">MAY 2026</span>
+          </div>
+          <div class="calendar-days-names">
+            <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+          </div>
+          <div class="calendar-days-grid">
+            <!-- Blank offsets for may 2026 starting on Friday -->
+            <span class="blank"></span><span class="blank"></span><span class="blank"></span><span class="blank"></span><span class="blank"></span>
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
+            <span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
+            <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span>
+            <span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span>
+            <span>29</span><span class="today-circle">30</span><span>31</span>
+          </div>
+        </div>
+
+        <!-- Weather Widget -->
+        <div class="nc-widget weather-widget">
+          <div class="weather-left">
+            <span class="weather-icon" id="mac-weather-icon">🌧️</span>
+            <div class="weather-temp-group">
+              <span class="temp" id="mac-weather-temp">14°C</span>
+              <span class="weather-desc" id="mac-weather-desc">Rainy Storm</span>
+            </div>
+          </div>
+          <div class="weather-right">
+            <span class="city">Dev City</span>
+            <span class="hi-lo">H: 16° L: 10°</span>
+          </div>
+        </div>
+
+        <!-- Notification Stack Alerts -->
+        <div class="nc-notifications">
+          <h3>Notifications</h3>
+          
+          <div class="noti-item">
+            <div class="noti-header">
+              <span class="noti-app">⚡ Github</span>
+              <span class="noti-time">Just now</span>
+            </div>
+            <p class="noti-text">Production deployment successful: built in 733ms.</p>
+          </div>
+
+          <div class="noti-item">
+            <div class="noti-header">
+              <span class="noti-app">☕ DevRoom OS</span>
+              <span class="noti-time">10m ago</span>
+            </div>
+            <p class="noti-text">Coffee levels under 15% limits. Refill immediately.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- macOS Dock Bar -->
+      <footer class="mac-dock-container">
+        <div class="mac-dock">
+          <div class="dock-item" data-open="win-about" title="About Me">
+            <span class="dock-emoji">👤</span>
+            <span class="dock-indicator"></span>
+          </div>
+          <div class="dock-item" data-open="win-projects" title="Projects">
+            <span class="dock-emoji">📂</span>
+            <span class="dock-indicator"></span>
+          </div>
+          <div class="dock-item" data-open="win-resume" title="Resume">
+            <span class="dock-emoji">📝</span>
+            <span class="dock-indicator"></span>
+          </div>
+          <div class="dock-item" data-open="win-contact" title="Contact">
+            <span class="dock-emoji">✉️</span>
+            <span class="dock-indicator"></span>
+          </div>
+          <span class="dock-separator"></span>
+          <div class="dock-item" id="dock-shutdown" title="Shut Down OS (Back to 3D Room)">
+            <span class="dock-emoji">🔴</span>
+            <span class="dock-indicator"></span>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <!-- Main Module Loading script -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
